@@ -1,0 +1,20 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .Navbar a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 1rem;
+  }
+  
+  .Navbar a:hover {
+    text-decoration: underline;
+  }
+  
