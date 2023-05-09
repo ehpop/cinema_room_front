@@ -49,6 +49,7 @@ const Profile = () => {
         <img alt="user-profile" src={user?.picture}></img>
         <p>{user?.name}</p>
         <p>{user?.nickname}</p>
+        <p>{user?.email}</p>
         <LogoutButton></LogoutButton>
         {userMetadata ? (
           <pre>{JSON.stringify(userMetadata, null, 2)}</pre>

@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import MovieDetails from "./pages/MovieDetails";
 import About from "./pages/About";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "./components/Footer";
 
 interface IAppContext {
   selectedMovie: IMovie | null;
@@ -58,6 +59,7 @@ function App() {
               <Route path="/about" element={<About></About>} />
               <Route path="/*" element={<PageNotFound></PageNotFound>} />
             </Routes>
+            <Footer></Footer>
           </Router>
         </AppContext.Provider>
       </QueryClientProvider>
