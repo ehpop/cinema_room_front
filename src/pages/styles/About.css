@@ -1,0 +1,69 @@
+/* About.css */
+
+.About {
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.AboutContent {
+  flex: 1;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.AboutContent h1 {
+  font-size: 80px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.AboutContent p {
+  color: #555;
+  font-size: 25px;
+  margin-bottom: 45px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.AboutContent p::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #ccc;
+  position: absolute;
+  bottom: -25px; /* Adjust the position of the line as needed */
+  left: 0;
+  right: 0;
+}
+
+.AboutImages {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 35%; /* Set the width to 40% */
+  padding: 40px;
+}
+
+.AboutImages img {
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .About {
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  .AboutContent {
+    border-right: none;
+  }
+
+  .AboutImages {
+    flex: 1;
+    width: 100%;
+  }
+}
