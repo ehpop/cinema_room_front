@@ -1,9 +1,7 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../App";
-import { IMovie } from "../components/Movie";
-import ReserveButton from "../components/ReserveButton";
-import SeeScreeningsButton from "../components/SeeScreeningsButton";
+import SeeScreeningsButton from "../components/buttons/SeeScreeningsButton";
 
 const MovieDetails = () => {
   const { selectedMovie } = useContext(AppContext);
@@ -23,8 +21,7 @@ const MovieDetails = () => {
       {/* TODO: Implement picture and description for a movie */}
       {/* <img src={picture ? picture : null} alt={title} />
       <p>{description}</p> */}
-      <ReserveButton movie={selectedMovie}></ReserveButton>
-      <SeeScreeningsButton movie={selectedMovie}></SeeScreeningsButton>
+      <SeeScreeningsButton></SeeScreeningsButton>
     </div>
   );
 };

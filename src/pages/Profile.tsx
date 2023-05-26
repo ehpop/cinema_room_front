@@ -50,6 +50,7 @@ const Profile = () => {
         <p>{user?.name}</p>
         <p>{user?.nickname}</p>
         <p>{user?.email}</p>
+        <p>{user?.u}</p>
         <LogoutButton></LogoutButton>
         {userMetadata ? (
           <pre>{JSON.stringify(userMetadata, null, 2)}</pre>

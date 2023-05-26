@@ -25,6 +25,11 @@
   margin-left: 5px;
 }
 
+.userContent {
+  display: flex;
+  align-items: center;
+}
+
 .miniUser {
   width: 20px;
   height: 20px;

@@ -1,0 +1,17 @@
+.confirmButton {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .confirmButton:hover {
+    background-color: #27ae60;
+  }
+  
+  .confirmButton:focus {
+    outline: none;
+  }
+  

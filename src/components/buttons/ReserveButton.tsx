@@ -1,12 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IMovie } from "../components/Movie";
+interface ReserveButtonProps {}
 
-interface ReserveButtonProps {
-  movie: IMovie;
-}
-
-const ReserveButton: React.FC<ReserveButtonProps> = ({ movie }) => {
+const ReserveButton: React.FC<ReserveButtonProps> = () => {
   return (
     <Link to={`/reservations`}>
       <button>Reserve Now</button>

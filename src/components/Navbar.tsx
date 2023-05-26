@@ -6,6 +6,8 @@ import HomeIcon from "../img/icons/home.png";
 import MoviesIcon from "../img/icons/movie.png";
 import AboutIcon from "../img/icons/about.png";
 import SignUpIcon from "../img/icons/signUp.png";
+import ContactIcon from "../img/icons/contact.png";
+import Logo from "../img/logo.png";
 
 import "./styles/Navbar.css";
 
@@ -13,20 +15,25 @@ import "./styles/Navbar.css";
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth0();
 
-  const userElem: JSX.Element = isAuthenticated ? (
-    <NavbarElement>
+  const userContent: JSX.Element = isAuthenticated ? (
+    <div className="userContent">
+      <Link to="/profile">{user?.name}</Link>
       <img src={user?.picture} alt={user?.nickname} className="miniUser"></img>
-      <Link to="/profile">{user?.nickname}</Link>
-    </NavbarElement>
+    </div>
   ) : (
-    <NavbarElement>
-      <img src={SignUpIcon} alt="about"></img>
+    <div className="userContent">
       <Link to="/signup">Sign Up</Link>
-    </NavbarElement>
+      <img src={SignUpIcon} alt="about"></img>
+    </div>
   );
 
   return (
     <div className="Navbar">
+      <NavbarElement>
+        <Link to="/">
+          <img src={Logo} alt="logo" id="logo"></img>
+        </Link>
+      </NavbarElement>
       <NavbarElement>
         <img src={HomeIcon} alt="home"></img>
         <Link to="/">Home</Link>
@@ -39,7 +46,11 @@ const Navbar = () => {
         <img src={AboutIcon} alt="about"></img>
         <Link to="/about">About us</Link>
       </NavbarElement>
-      {userElem}
+      <NavbarElement>
+        <img src={ContactIcon} alt="contact"></img>
+        <Link to="/contact">Contact us</Link>
+      </NavbarElement>
+      <NavbarElement>{userContent}</NavbarElement>
     </div>
   );
 };

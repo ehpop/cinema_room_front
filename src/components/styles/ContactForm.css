@@ -1,81 +1,87 @@
 .ContactForm {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-  }
-  
-  .ContactForm form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .ContactForm select,
-  .ContactForm textarea,
-  .ContactForm input[type='email'] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-  }
-  
-  .ContactForm textarea {
-    resize: none;
-  }
-  
-  .ContactForm select {
-    appearance: none;
-    /* background-image: url('../../img/icons/movie.png'); */
-    background-repeat: no-repeat;
-    background-position: right center;
-    padding-right: 30px;
-  }
-  
-  .ContactForm input[type='email'] {
-    appearance: none;
-    /* background-image: url('../../img/icons/about.png'); */
-    background-repeat: no-repeat;
-    background-position: right center;
-    padding-right: 30px;
-  }
-  
-  .ContactForm textarea::placeholder,
-  .ContactForm input[type='email']::placeholder {
-    color: #999;
-  }
-  
-  .ContactForm [type='submit'] {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  
-  .ContactForm [type='submit']:hover {
-    background-color: #555;
-  }
-  
-  .ContactForm [type='submit']:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+  text-align: left;
+}
 
-  .formError {
-    color: #ff0000;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  
+.ContactForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactForm select,
+.ContactForm textarea,
+.ContactForm input[type='email'] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.ContactForm textarea {
+  resize: none;
+}
+
+.ContactForm select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.ContactForm input[type='email'] {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.ContactForm textarea::placeholder,
+.ContactForm input[type='email']::placeholder {
+  color: #999;
+}
+
+.ContactForm .messageBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactForm .emailBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.ContactForm .formDescription {
+  text-align: left;
+  font-size: 13px;
+  color: #999;
+  margin-top: 0px;
+}
+
+.ContactForm .formError {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.ContactForm [type='submit'] {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.ContactForm [type='submit']:hover {
+  background-color: #555;
+}
+
+.ContactForm [type='submit']:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

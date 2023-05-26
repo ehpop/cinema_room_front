@@ -1,0 +1,56 @@
+.reservationContainer {
+  margin-top: 20px;
+  width: 80%;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
+  left: 10%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reservationContainer h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.tableContainer {
+  margin-bottom: 20px;
+  width: 75%;
+  position: relative;
+  left: 30%;
+}
+
+table {
+  width: 50%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  width: 50%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f8f8f8;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

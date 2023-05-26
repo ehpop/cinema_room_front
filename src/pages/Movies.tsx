@@ -17,33 +17,38 @@ const Movies = () => {
   });
 
   const { selectedMovie, setSelectedMovie } = useContext(AppContext);
+  const [searchCryteria, setSearchCryteria] = useState("");
 
   return (
     <div className="movies">
       <h1>Movies currently playing in our cinema</h1>
-      <button
-        onClick={() => {
-          setSelectedMovie(movieList ? movieList[0] : null);
-          console.log(selectedMovie);
-        }}
-      >
-        mmm
-      </button>
+      <div className="moviesSearchBar">
+        <input
+          type="text"
+          onChange={(event) => setSearchCryteria(event.target.value)}
+          placeholder="Search for a movie..."
+          className="searchBar"
+        ></input>
+      </div>
       <div className="movieList">
         {isLoading ? (
           <p>Loading...</p>
         ) : isError ? (
           <p>There was an error while loading movies</p>
         ) : (
-          movieList?.map((movie) => (
-            <Movie
-              key={movie.id}
-              movie={movie}
-              onClick={() => {
-                setSelectedMovie(movie);
-              }}
-            />
-          ))
+          movieList
+            ?.filter((movie) =>
+              movie.title.toLowerCase().includes(searchCryteria.toLowerCase())
+            )
+            .map((movie) => (
+              <Movie
+                key={movie.id}
+                movie={movie}
+                onClick={() => {
+                  setSelectedMovie(movie);
+                }}
+              />
+            ))
         )}
       </div>
     </div>

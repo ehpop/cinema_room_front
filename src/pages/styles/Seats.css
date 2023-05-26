@@ -1,0 +1,179 @@
+.seats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    max-width: 1000px;
+    padding: 10px;
+  }
+  
+  .seatsContainer {
+    display: grid;
+    height: 80vh;
+    grid-template-columns: 2fr 15fr 15fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Rows Section-1 Section-2"
+      "Rows Section-1 Section-2"
+      "Rows Section-1 Section-2";
+  }
+  
+  .description {
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }
+
+  .ButtonsContainer {
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    gap: 10px;
+  }
+
+  .Rows {
+    grid-area: Rows;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff; 
+  }
+  
+  .Section-1 {
+    grid-area: Section-1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+  }
+  
+  .Section-2 {
+    grid-area: Section-2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff; 
+  }
+
+  .taken-seat {
+    width: calc(100% / 6 - 10px);
+    height: calc(100% / 11 - 20px);
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: not-allowed;
+    background-color: #e74c3c;
+  }
+  
+  .available-seat {
+    width: calc(100% / 6 - 10px);
+    height: calc(100% / 11 - 20px);
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2ecc71;
+  }
+
+  .picked-seat {
+    width: calc(100% / 6 - 10px);
+    height: calc(100% / 11 - 20px);
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f1c40f;
+  }
+
+  .Row {
+    width: 50%;
+    height: calc(100% / 11 - 20px);
+    margin: 5px;
+  }
+
+  .rowNumber {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }
+
+  .seatNumber {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .Screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(0, 195, 255);
+    border: 3px solid #4d4d4d;
+    
+  }
+
+  .RowsDescription {
+    width: 6.25%;
+    height: 100%;
+    display: flex;
+    justify-content: first baseline;
+    align-items:last baseline;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }

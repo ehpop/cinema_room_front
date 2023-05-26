@@ -8,15 +8,22 @@
   }
 
   .NavbarElement img {
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    margin-right: 8px;
+  }
+
+  #logo {
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     margin-right: 8px;
   }
 
   .NavbarElement .miniUser {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     border-radius: 50%;
     margin-left: 10px;

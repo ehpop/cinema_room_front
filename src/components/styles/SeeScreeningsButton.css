@@ -1,50 +1,73 @@
-.screeningEntry {
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  
-  button {
-    background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 0;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #006D8A;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  /* hide the list by default */
-  .screeningList {
-    display: none;
-  }
-  
-  /* show the list when the button is clicked */
-  .screeningList.visible {
-    display: block;
-  }
+.screeningsGreed {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin: 10px 0;
+}
 
-  .list-container {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
-  }
-  
-  .list-animation {
-    max-height: 500px;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
-  }
-  
-  
+.screeningEntry {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.screeningInfo {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006D8A;
+}
+
+button:focus {
+  outline: none;
+}
+
+.list-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.list-container.visible {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.screeningEntry {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  background-color: #F5F5F5;
+}
+
+.screeningEntry:hover {
+  background-color: #E5E5E5;
+}
+
+.screeningEntry.selected {
+  background-color: #008CBA;
+  color: white;
+}
+
+.screeningEntry p {
+  margin: 0;
+}
+
