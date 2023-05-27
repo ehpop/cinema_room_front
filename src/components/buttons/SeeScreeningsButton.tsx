@@ -51,6 +51,7 @@ const SeeScreeningsButton = () => {
           selectedList.length > 0 &&
           selectedList.map((screening) => (
             <ScreeningInfo
+              key={screening.id}
               screening={screening}
               selectedScreening={selectedScreening}
               onClick={setSelectedScreening}

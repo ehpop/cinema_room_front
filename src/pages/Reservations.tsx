@@ -6,14 +6,16 @@ import { formatDateTimeInfo, extractDateTimeInfo } from "../utils/dateUtils";
 import "./styles/Reservations.css";
 import ConfirmButton from "../components/buttons/ConfirmButton";
 import CancelButton from "../components/buttons/CancelButton";
+import PageNotFound from "./PageNotFound";
+import ErrorPage from "./ErrorPage";
+import Axios from "axios";
 
 export interface IReservation {
   id: number;
-  movieId: number;
+  customerName: string;
   screeningInfo: number;
-  userEmail: string;
   seat: number;
-  reservationDate: string;
+  date: string;
 }
 
 const Reservations = () => {
@@ -23,23 +25,41 @@ const Reservations = () => {
     setSelectedMovie,
     selectedScreening,
     setSelectedScreening,
-    selectedSeat,
-    setSelectedSeat,
+    selectedSeats,
+    setSelectedSeats,
   } = useContext(AppContext);
 
   const handleCancel = () => {
     setSelectedMovie(null);
     setSelectedScreening(null);
-    setSelectedSeat(null);
+    setSelectedSeats(null);
   };
 
-  const handleConfirm = () => {
-    alert("Reservation confirmed!");
-    //! TODO: add reservation to database
-    handleCancel();
+  const handleConfirm = async () => {
+    console.log(selectedMovie, selectedScreening, selectedSeats);
+    const reservation: IReservation = {
+      id: 0,
+      customerName: user?.email || "",
+      screeningInfo: selectedScreening?.id || 0,
+      seat: -1 || 0,
+      date: new Date().toISOString(),
+    };
+
+    try {
+      console.log(reservation);
+      const response = await Axios.post(
+        `http://localhost:8080/movies/${selectedMovie?.id}/reserve`,
+        reservation
+      );
+      handleCancel();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
 
-  return (
+  const reservationContent = (
     <div className="reservationContainer">
       <h1>Reservation confirmation</h1>
       <div className="tableContainer">
@@ -71,7 +91,7 @@ const Reservations = () => {
             </tr>
             <tr>
               <th>Seat Number:</th>
-              <td>{selectedSeat?.seatNumber}</td>
+              <td>{selectedSeats ? selectedSeats?.toString() : "null"}</td>
             </tr>
             <tr>
               <th>Start Time:</th>
@@ -100,8 +120,16 @@ const Reservations = () => {
       </div>
       <div className="buttonsContainer">
         <CancelButton onClick={handleCancel} linkTo={"/movies"} />
-        <ConfirmButton onClick={handleConfirm} />
+        <ConfirmButton onClick={handleConfirm} linkTo="/reservationSuccess" />
       </div>
+    </div>
+  );
+
+  return selectedMovie && selectedScreening && selectedSeats ? (
+    reservationContent
+  ) : (
+    <div className="container">
+      <ErrorPage />
     </div>
   );
 };

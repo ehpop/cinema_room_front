@@ -18,14 +18,15 @@ import Contact from "./pages/Contact";
 import Seats from "./pages/Seats";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "./components/Footer";
+import ReservationSuccessful from "./pages/ReservationSuccessful";
 
 interface IAppContext {
   selectedMovie: IMovie | null;
   setSelectedMovie: React.Dispatch<React.SetStateAction<IMovie | null>>;
   selectedScreening: IScreening | null;
   setSelectedScreening: React.Dispatch<React.SetStateAction<IScreening | null>>;
-  selectedSeat: ISeat | null;
-  setSelectedSeat: React.Dispatch<React.SetStateAction<ISeat | null>>;
+  selectedSeats: ISeat[] | null;
+  setSelectedSeats: React.Dispatch<React.SetStateAction<ISeat[] | null>>;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -33,8 +34,8 @@ export const AppContext = createContext<IAppContext>({
   setSelectedMovie: () => {},
   selectedScreening: null,
   setSelectedScreening: () => {},
-  selectedSeat: null,
-  setSelectedSeat: () => {},
+  selectedSeats: null,
+  setSelectedSeats: () => {},
 });
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
   const [selectedScreening, setSelectedScreening] = useState<IScreening | null>(
     null
   );
-  const [selectedSeat, setSelectedSeat] = useState<ISeat | null>(null);
+  const [selectedSeats, setSelectedSeats] = useState<ISeat[] | null>(null);
 
   return (
     <div className="App">
@@ -61,8 +62,8 @@ function App() {
             setSelectedMovie,
             selectedScreening,
             setSelectedScreening,
-            selectedSeat,
-            setSelectedSeat,
+            selectedSeats,
+            setSelectedSeats,
           }}
         >
           <Router>
@@ -84,6 +85,10 @@ function App() {
               <Route path="/about" element={<About></About>} />
               <Route path="/contact" element={<Contact></Contact>} />
               <Route path="/seats" element={<Seats></Seats>} />
+              <Route
+                path="/reservationSuccess"
+                element={<ReservationSuccessful></ReservationSuccessful>}
+              />
               <Route path="/*" element={<PageNotFound></PageNotFound>} />
             </Routes>
             <Footer></Footer>

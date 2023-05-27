@@ -8,7 +8,7 @@ import { AppContext } from "../App";
 import { IScreening } from "../components/ScreeningInfo";
 import ConfirmButton from "../components/buttons/ConfirmButton";
 import CancelButton from "../components/buttons/CancelButton";
-import { ref } from "yup";
+import { set } from "react-hook-form";
 
 export interface ISeat {
   seatNumber: number;
@@ -19,8 +19,8 @@ const Seats = () => {
   const {
     selectedScreening,
     setSelectedScreening,
-    selectedSeat,
-    setSelectedSeat,
+    selectedSeats,
+    setSelectedSeats,
   } = useContext(AppContext);
 
   const {
@@ -63,22 +63,36 @@ const Seats = () => {
 
   useEffect(() => {
     refetch();
-  }, []);
+  });
 
   const handleOnClick = (seat: ISeat) => {
     if (seat.isTaken) {
       return;
     }
 
-    setSelectedSeat(seat);
+    setSelectedSeats((prev) => {
+      if (!prev) {
+        return [seat];
+      }
+
+      if (prev.includes(seat)) {
+        return prev.filter((prevSeat) => prevSeat !== seat);
+      }
+
+      return [...prev, seat];
+    });
   };
 
   const handleConfirm = () => {
-    alert("Reservation confirmed!");
+    console.log(selectedSeats, selectedScreening);
+
+    if (!selectedSeats || selectedSeats.length === 0 || !selectedScreening) {
+      return;
+    }
   };
 
   const handleCancel = () => {
-    setSelectedSeat(null);
+    setSelectedSeats(null);
     setSelectedScreening(null);
   };
 
@@ -95,7 +109,7 @@ const Seats = () => {
           className={
             seat.isTaken
               ? "taken-seat"
-              : selectedSeat?.seatNumber === seat.seatNumber
+              : selectedSeats?.includes(seat)
               ? "picked-seat"
               : "available-seat"
           }
@@ -112,6 +126,19 @@ const Seats = () => {
       </div>
     ));
 
+  const calculatePrice = () => {
+    if (!selectedSeats || !selectedScreening) {
+      return 0;
+    }
+
+    //! TODO: Calculate price based on selected seats and screening
+    // const pricePerSeat = selectedScreening.price;
+
+    const price = selectedSeats.length * 20;
+
+    return price;
+  };
+
   return (
     <div className="seats">
       <h1>Pick your seat for screening</h1>
@@ -124,6 +151,10 @@ const Seats = () => {
         <div className="Section-1">{renderSeatsBySection([1, 2, 3, 4, 5])}</div>
         <div className="Section-2">{renderSeatsBySection([6, 7, 8, 9, 0])}</div>
       </div>
+      <div className="PriceContainer">
+        <div className="PriceDescription">Price:</div>
+        <div className="Price">{calculatePrice()} pln</div>
+      </div>
       <div className="ButtonsContainer">
         <CancelButton
           linkTo="/movies/details"
@@ -132,19 +163,12 @@ const Seats = () => {
         <ConfirmButton
           linkTo="/reservations"
           onClick={handleConfirm}
-          disabled={!selectedSeat}
+          disabled={
+            selectedSeats && selectedSeats.length !== 0 && selectedScreening
+              ? false
+              : true
+          }
         ></ConfirmButton>
-        <button
-          className="backButton"
-          onClick={() => {
-            console.log(
-              selectedScreening?.id,
-              filteredReservationsList,
-              reservationsList
-            );
-            refetch();
-          }}
-        ></button>
       </div>
     </div>
   );
