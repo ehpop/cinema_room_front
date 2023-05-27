@@ -27,31 +27,43 @@ const Reservations = () => {
     setSelectedScreening,
     selectedSeats,
     setSelectedSeats,
+    setLastReservation,
   } = useContext(AppContext);
 
   const handleCancel = () => {
     setSelectedMovie(null);
     setSelectedScreening(null);
     setSelectedSeats(null);
+    setLastReservation(null);
   };
 
   const handleConfirm = async () => {
-    console.log(selectedMovie, selectedScreening, selectedSeats);
     const reservation: IReservation = {
       id: 0,
       customerName: user?.email || "",
       screeningInfo: selectedScreening?.id || 0,
-      seat: -1 || 0,
+      seat: 0,
       date: new Date().toISOString(),
     };
 
     try {
-      console.log(reservation);
+      selectedSeats?.forEach((seat) => {
+        reservation.seat = seat.seatNumber;
+        postReservation(reservation);
+      });
+      setLastReservation(reservation);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+  const postReservation = async (reservation: IReservation) => {
+    try {
       const response = await Axios.post(
         `http://localhost:8080/movies/${selectedMovie?.id}/reserve`,
         reservation
       );
-      handleCancel();
       return response.data;
     } catch (error) {
       console.log(error);
@@ -90,8 +102,18 @@ const Reservations = () => {
               <td>{selectedScreening?.room}</td>
             </tr>
             <tr>
-              <th>Seat Number:</th>
-              <td>{selectedSeats ? selectedSeats?.toString() : "null"}</td>
+              <th>Seat Number(s):</th>
+              <td>
+                {selectedSeats
+                  ? selectedSeats.map((seat) => seat.seatNumber).join(", ")
+                  : "null"}
+              </td>
+            </tr>
+            <tr className="price">
+              <th>Price:</th>
+              <td>
+                {selectedSeats ? selectedSeats.length * 20 + " PLN" : "null"}
+              </td>
             </tr>
             <tr>
               <th>Start Time:</th>

@@ -20,7 +20,7 @@ export function extractDateTimeInfo(dateTimeString: string): IDate {
   return { year, month, day, hour, minute, second };
 }
 
-export function formatDateTimeInfo(dateTime: IDate) {
+export function formatDateTimeInfo(dateTime: IDate): string {
   const { year, month, day, hour, minute } = dateTime;
 
   const yearString = year.toString().padStart(4, "0");
@@ -30,4 +30,23 @@ export function formatDateTimeInfo(dateTime: IDate) {
   const minuteString = minute.toString().padStart(2, "0");
 
   return `${yearString}-${monthString}-${dayString} ${hourString}:${minuteString}`;
+}
+
+export function extractTimeOnlyInfo(dateTimeString: string): string {
+  const date = new Date(dateTimeString);
+
+  const hourString = date.getHours().toString().padStart(2, "0");
+  const minuteString = date.getMinutes().toString().padStart(2, "0");
+
+  return `${hourString}:${minuteString}`;
+}
+
+export function extractDateOnlyInfo(dateTimeString: string): string {
+  const date = new Date(dateTimeString);
+
+  const yearString = date.getFullYear().toString().padStart(4, "0");
+  const monthString = (date.getMonth() + 1).toString().padStart(2, "0");
+  const dayString = date.getDate().toString().padStart(2, "0");
+
+  return `${yearString}-${monthString}-${dayString}`;
 }

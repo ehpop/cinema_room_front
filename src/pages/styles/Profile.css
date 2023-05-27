@@ -1,29 +1,90 @@
-.profilePage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
-    font-size: 1.2rem;
-  }
-  
-  button {
-    padding: 1rem;
-    margin: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0069d9;
-  }
-  
-  button:active {
-    background-color: #005cbf;
-  }
-  
+.ProfileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ProfileContainer img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.ProfileContainer .userInfo p {
+  margin: 5px;
+}
+
+.ProfileContainer .reservationsLabel {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.ProfileContainer .reservationsContainer {
+  margin-top: 10px;
+}
+
+.ProfileContainer .reservationEntry {
+  margin-bottom: 10px;
+}
+
+.ProfileContainer .reservationDateTime {
+  font-weight: bold;
+}
+
+.ProfileContainer .reservationSeat {
+  margin-top: 5px;
+}
+
+.ProfileContainer .reservationMovieTitle {
+  margin-top: 5px;
+}
+
+.ProfileContainer pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  margin-top: 20px;
+}
+
+.ProfileContainer p {
+  margin: 5px;
+}
+
+.LogoutButton {
+  margin-top: 20px;
+}
+
+.reservationsContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+.reservationsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservationsTable th,
+.reservationsTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.reservationEntry:hover {
+  background-color: #f5f5f5;
+}
+
+.reservationDateTime {
+  width: 30%;
+}
+
+.reservationSeat {
+  width: 20%;
+}
+
+.reservationMovieTitle {
+  width: 50%;
+}
+

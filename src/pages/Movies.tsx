@@ -12,11 +12,11 @@ const Movies = () => {
     data: movieList,
     isLoading,
     isError,
-  } = useQuery<[IMovie]>(["movie"], () => {
+  } = useQuery<IMovie[]>(["movie"], () => {
     return Axios.get("http://localhost:8080/movies").then((res) => res.data);
   });
 
-  const { selectedMovie, setSelectedMovie } = useContext(AppContext);
+  const { setSelectedMovie } = useContext(AppContext);
   const [searchCryteria, setSearchCryteria] = useState("");
 
   return (

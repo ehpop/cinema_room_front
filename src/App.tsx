@@ -8,7 +8,7 @@ import { IMovie } from "./components/Movie";
 import { IScreening } from "./components/ScreeningInfo";
 import { ISeat } from "./pages/Seats";
 import Rooms from "./pages/Rooms";
-import Reservations from "./pages/Reservations";
+import Reservations, { IReservation } from "./pages/Reservations";
 import PageNotFound from "./pages/PageNotFound";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
@@ -27,6 +27,8 @@ interface IAppContext {
   setSelectedScreening: React.Dispatch<React.SetStateAction<IScreening | null>>;
   selectedSeats: ISeat[] | null;
   setSelectedSeats: React.Dispatch<React.SetStateAction<ISeat[] | null>>;
+  lastReservation: IReservation | null;
+  setLastReservation: React.Dispatch<React.SetStateAction<IReservation | null>>;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -36,6 +38,8 @@ export const AppContext = createContext<IAppContext>({
   setSelectedScreening: () => {},
   selectedSeats: null,
   setSelectedSeats: () => {},
+  lastReservation: null,
+  setLastReservation: () => {},
 });
 
 function App() {
@@ -52,6 +56,9 @@ function App() {
     null
   );
   const [selectedSeats, setSelectedSeats] = useState<ISeat[] | null>(null);
+  const [lastReservation, setLastReservation] = useState<IReservation | null>(
+    null
+  );
 
   return (
     <div className="App">
@@ -64,6 +71,8 @@ function App() {
             setSelectedScreening,
             selectedSeats,
             setSelectedSeats,
+            lastReservation,
+            setLastReservation,
           }}
         >
           <Router>
@@ -87,7 +96,13 @@ function App() {
               <Route path="/seats" element={<Seats></Seats>} />
               <Route
                 path="/reservationSuccess"
-                element={<ReservationSuccessful></ReservationSuccessful>}
+                element={
+                  <ReservationSuccessful
+                    reservation={lastReservation}
+                    screening={selectedScreening}
+                    movie={selectedMovie}
+                  ></ReservationSuccessful>
+                }
               />
               <Route path="/*" element={<PageNotFound></PageNotFound>} />
             </Routes>
