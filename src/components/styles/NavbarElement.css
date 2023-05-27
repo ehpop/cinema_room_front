@@ -1,33 +1,71 @@
 .NavbarElement {
-    display: flex;
-    align-items: center;
-  }
-  
-  .NavbarElement {
-    margin-right: 10px;
-  }
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
 
-  .NavbarElement img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-    margin-right: 8px;
-  }
+.NavbarElement img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  margin-right: 8px;
+}
 
-  #logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-right: 8px;
-  }
+#logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 8px;
+}
 
-  .NavbarElement .miniUser {
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-left: 10px;
-    align-items: center;
-    display: flex;
-  }
-  
+.NavbarElement .miniUser {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+  align-items: center;
+  display: flex;
+}
+
+.selectedNavbarElement {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.selectedNavbarElement img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+#logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+.selectedNavbarElement .miniUser {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+  align-items: center;
+  display: flex;
+}
+
+.SelectedNavbarElement {
+  background-color: #00eeff;
+}
+
+.NavbarElement:hover, .selectedNavbarElement:hover {
+  background-color: #e9e9e9;
+}
+
+.NavbarElement:link, .selectedNavbarElement:link {
+  text-decoration: none;
+}

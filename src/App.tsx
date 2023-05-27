@@ -29,6 +29,8 @@ interface IAppContext {
   setSelectedSeats: React.Dispatch<React.SetStateAction<ISeat[] | null>>;
   lastReservation: IReservation | null;
   setLastReservation: React.Dispatch<React.SetStateAction<IReservation | null>>;
+  currentPage: string;
+  setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -40,6 +42,8 @@ export const AppContext = createContext<IAppContext>({
   setSelectedSeats: () => {},
   lastReservation: null,
   setLastReservation: () => {},
+  currentPage: "",
+  setCurrentPage: () => {},
 });
 
 function App() {
@@ -60,6 +64,8 @@ function App() {
     null
   );
 
+  const [currentPage, setCurrentPage] = useState<string>("");
+
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
@@ -73,6 +79,8 @@ function App() {
             setSelectedSeats,
             lastReservation,
             setLastReservation,
+            currentPage,
+            setCurrentPage,
           }}
         >
           <Router>

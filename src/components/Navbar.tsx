@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import NavbarElement from "./NavbarElement";
@@ -10,14 +10,17 @@ import ContactIcon from "../img/icons/contact.png";
 import Logo from "../img/logo.png";
 
 import "./styles/Navbar.css";
+import { AppContext } from "../App";
 
-//! TODO: Make Navbar dynamic by using a list of links and mapping them to <Link> components
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth0();
+  const { currentPage, setCurrentPage } = useContext(AppContext);
 
   const userContent: JSX.Element = isAuthenticated ? (
     <div className="userContent">
-      <Link to="/profile">{user?.name}</Link>
+      <Link to="/profile" onClick={() => setCurrentPage("profile")}>
+        {user?.name}
+      </Link>
       <img src={user?.picture} alt={user?.nickname} className="miniUser"></img>
     </div>
   ) : (
@@ -29,28 +32,43 @@ const Navbar = () => {
 
   return (
     <div className="Navbar">
-      <NavbarElement>
+      <NavbarElement selected={currentPage === "home"}>
         <Link to="/">
-          <img src={Logo} alt="logo" id="logo"></img>
+          <img
+            src={Logo}
+            alt="logo"
+            id="logo"
+            onClick={() => setCurrentPage("home")}
+          ></img>
         </Link>
       </NavbarElement>
-      <NavbarElement>
+      <NavbarElement selected={currentPage === "home"}>
         <img src={HomeIcon} alt="home"></img>
-        <Link to="/">Home</Link>
+        <Link to="/" onClick={() => setCurrentPage("home")}>
+          Home
+        </Link>
       </NavbarElement>
-      <NavbarElement>
+      <NavbarElement selected={currentPage === "movies"}>
         <img src={MoviesIcon} alt="movies"></img>
-        <Link to="/movies">Movies</Link>
+        <Link to="/movies" onClick={() => setCurrentPage("movies")}>
+          Movies
+        </Link>
       </NavbarElement>
-      <NavbarElement>
+      <NavbarElement selected={currentPage === "about"}>
         <img src={AboutIcon} alt="about"></img>
-        <Link to="/about">About us</Link>
+        <Link to="/about" onClick={() => setCurrentPage("about")}>
+          About us
+        </Link>
       </NavbarElement>
-      <NavbarElement>
+      <NavbarElement selected={currentPage === "contact"}>
         <img src={ContactIcon} alt="contact"></img>
-        <Link to="/contact">Contact us</Link>
+        <Link to="/contact" onClick={() => setCurrentPage("contact")}>
+          Contact us
+        </Link>
       </NavbarElement>
-      <NavbarElement>{userContent}</NavbarElement>
+      <NavbarElement selected={currentPage === "profile"}>
+        {userContent}
+      </NavbarElement>
     </div>
   );
 };
