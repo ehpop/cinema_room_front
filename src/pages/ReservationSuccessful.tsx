@@ -60,13 +60,13 @@ const ReservationSuccessful = ({
           <span>Date:</span>
           <span>
             {screening
-              ? extractDateOnlyInfo(formatDateTimeInfo(screening.startTime))
+              ? extractDateOnlyInfo(screening.startTime.toString())
               : ""}
           </span>
         </div>
         <div>
           <span>Time:</span>
-          <span>{extractTimeOnlyInfo(reservation.date)}</span>
+          <span>{extractTimeOnlyInfo(reservation.date.toString())}</span>
         </div>
         <div>
           <span>Seat:</span>
@@ -84,7 +84,7 @@ const ReservationSuccessful = ({
       <p>Thank you for choosing our services. Enjoy the movie!</p>
       <div className="buttons">
         <Button
-          linkTo="/home"
+          linkTo="/"
           value="Back to Home"
           onClick={onClickBackToHome}
         ></Button>

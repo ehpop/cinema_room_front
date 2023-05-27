@@ -59,15 +59,36 @@ button:focus {
 }
 
 .screeningEntry:hover {
-  background-color: #E5E5E5;
+  background-color: #F5F5F5;
 }
 
 .screeningEntry.selected {
-  background-color: #008CBA;
-  color: white;
+  background-color: #00ba4d;
+  color: #F5F5F5;
 }
 
 .screeningEntry p {
   margin: 0;
+}
+
+.screeningEntry table {
+  width: 100%;
+}
+
+.screeningEntry table tr:hover {
+  background-color: #9b9b9b;
+}
+
+.screeningEntry table td {
+  padding: 5px;
+}
+
+.screeningEntry table td:first-child {
+  font-weight: bold;
+  width: 120px;
+}
+
+.screeningEntry table td:last-child {
+  text-align: left;
 }
 

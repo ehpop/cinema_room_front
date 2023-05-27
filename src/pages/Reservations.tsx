@@ -2,7 +2,12 @@ import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { useAuth0 } from "@auth0/auth0-react";
-import { formatDateTimeInfo, extractDateTimeInfo } from "../utils/dateUtils";
+import {
+  formatDateTimeInfo,
+  extractDateTimeInfo,
+  extractTimeOnlyInfo,
+  extractDateOnlyInfo,
+} from "../utils/dateUtils";
 import "./styles/Reservations.css";
 import ConfirmButton from "../components/buttons/ConfirmButton";
 import CancelButton from "../components/buttons/CancelButton";
@@ -116,14 +121,18 @@ const Reservations = () => {
               </td>
             </tr>
             <tr>
+              <th>Date:</th>
+              <td>
+                {selectedScreening
+                  ? extractDateOnlyInfo(selectedScreening.startTime.toString())
+                  : ""}
+              </td>
+            </tr>
+            <tr>
               <th>Start Time:</th>
               <td>
                 {selectedScreening
-                  ? formatDateTimeInfo(
-                      extractDateTimeInfo(
-                        selectedScreening.startTime.toString()
-                      )
-                    )
+                  ? extractTimeOnlyInfo(selectedScreening.startTime.toString())
                   : ""}
               </td>
             </tr>
@@ -131,9 +140,7 @@ const Reservations = () => {
               <th>End Time:</th>
               <td>
                 {selectedScreening
-                  ? formatDateTimeInfo(
-                      extractDateTimeInfo(selectedScreening.endTime.toString())
-                    )
+                  ? extractTimeOnlyInfo(selectedScreening.endTime.toString())
                   : ""}
               </td>
             </tr>
@@ -141,7 +148,7 @@ const Reservations = () => {
         </table>
       </div>
       <div className="buttonsContainer">
-        <CancelButton onClick={handleCancel} linkTo={"/movies"} />
+        <CancelButton onClick={handleCancel} linkTo="/movies" />
         <ConfirmButton onClick={handleConfirm} linkTo="/reservationSuccess" />
       </div>
     </div>

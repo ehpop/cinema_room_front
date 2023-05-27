@@ -4,6 +4,7 @@ import {
   extractDateTimeInfo,
   IDate,
   extractTimeOnlyInfo,
+  extractDateOnlyInfo,
 } from "../utils/dateUtils";
 import { AppContext } from "../App";
 
@@ -35,7 +36,7 @@ export const ScreeningInfo = ({
       }`}
       onClick={() => onClick(screening)}
     >
-      <table>
+      <table className="screeningTable">
         <tbody>
           <tr>
             <td>Movie:</td>
@@ -51,23 +52,15 @@ export const ScreeningInfo = ({
           </tr>
           <tr>
             <td>Date: </td>
-            <td>{extractTimeOnlyInfo(screening.startTime.toString())}</td>
+            <td>{extractDateOnlyInfo(screening.startTime.toString())}</td>
           </tr>
           <tr>
             <td>Start Time:</td>
-            <td>
-              {formatDateTimeInfo(
-                extractDateTimeInfo(screening.startTime.toString())
-              )}
-            </td>
+            <td>{extractTimeOnlyInfo(screening.startTime.toString())}</td>
           </tr>
           <tr>
             <td>End Time:</td>
-            <td>
-              {formatDateTimeInfo(
-                extractDateTimeInfo(screening.endTime.toString())
-              )}
-            </td>
+            <td>{extractTimeOnlyInfo(screening.endTime.toString())}</td>
           </tr>
         </tbody>
       </table>
