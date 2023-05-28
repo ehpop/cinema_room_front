@@ -1,17 +1,28 @@
 import React from "react";
 import "./styles/Home.css";
+import MovieCarousel from "../components/MovieCarousel";
+import { useQuery } from "@tanstack/react-query";
+import Axios from "axios";
+import { IMovie } from "../components/Movie";
 //import ContactForm from "../components/ContactForm";
-//import MovieCarousel from "../components/MovieCarousel";
 //import MovieCategories from "../components/MovieCategories";
 
 const Home = () => {
+  const {
+    data: movieList,
+    isLoading,
+    isError,
+  } = useQuery<IMovie[]>(["movie"], () => {
+    return Axios.get("http://localhost:8080/movies").then((res) => res.data);
+  });
+
   return (
     <div className="homeDiv">
       <h1>Welcome to our Cinema!</h1>
 
       <section>
         <h2>Now Showing</h2>
-        {/* <MovieCarousel /> */}
+        <MovieCarousel movies={movieList ? movieList : []} />
       </section>
 
       <section>

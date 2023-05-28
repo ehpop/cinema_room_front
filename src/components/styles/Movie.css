@@ -30,11 +30,11 @@
 
   .MovieLink {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: black;
   }
   
   .MovieLink:hover {
-    color: rgb(0, 174, 255);
+    color: #00aeff;
   }
   
   

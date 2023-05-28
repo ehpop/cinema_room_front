@@ -13,16 +13,17 @@ export interface IMovie {
 interface MovieProps {
   movie: IMovie;
   onClick?: () => void;
+  className?: string;
 }
 
-const Movie: React.FC<MovieProps> = ({ movie, onClick }) => {
+const Movie: React.FC<MovieProps> = ({ movie, onClick, className }) => {
   return (
     <Link to={`/movies/details`} className="MovieLink" onClick={onClick}>
-      <div className="Movie">
-        <h2>{movie.title}</h2>
-        <p>Age category: {movie.ageCategory}</p>
-        <p>Director: {movie.director}</p>
-        <p>Duration: {movie.duration} min</p>
+      <div className={className ? className : "Movie"}>
+        <h2>{movie?.title}</h2>
+        <p>Age category: {movie?.ageCategory}</p>
+        <p>Director: {movie?.director}</p>
+        <p>Duration: {movie?.duration} min</p>
       </div>
     </Link>
   );

@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <div className="Navbar">
       <NavbarElement selected={currentPage === "home"}>
-        <Link to="/">
+        <Link to="/" className="link">
           <img
             src={Logo}
             alt="logo"
