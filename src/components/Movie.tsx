@@ -8,6 +8,7 @@ export interface IMovie {
   ageCategory: number;
   director: string;
   duration: number;
+  posterUrl: string;
 }
 
 interface MovieProps {
@@ -21,9 +22,21 @@ const Movie: React.FC<MovieProps> = ({ movie, onClick, className }) => {
     <Link to={`/movies/details`} className="MovieLink" onClick={onClick}>
       <div className={className ? className : "Movie"}>
         <h2>{movie?.title}</h2>
-        <p>Age category: {movie?.ageCategory}</p>
-        <p>Director: {movie?.director}</p>
-        <p>Duration: {movie?.duration} min</p>
+        <img
+          src={movie?.posterUrl}
+          alt={movie?.title}
+          style={{
+            width: "50%",
+            height: "50%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+        <div>
+          <p>Age category: {movie?.ageCategory}</p>
+          <p>Director: {movie?.director}</p>
+          <p>Duration: {movie?.duration} min</p>
+        </div>
       </div>
     </Link>
   );
