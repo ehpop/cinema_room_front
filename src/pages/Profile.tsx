@@ -85,7 +85,7 @@ const Profile = () => {
     }
 
     const screening = screenings?.find(
-      (screening) => screening.id === reservation.screeningInfo
+      (screening) => screening.id === reservation.screeningId
     );
 
     const movie = movies?.find((movie) => movie.id === screening?.movie);
@@ -117,7 +117,7 @@ const Profile = () => {
         </thead>
         <tbody>
           {reservations
-            ?.filter((reservation) => reservation.customerName === user?.email)
+            ?.filter((reservation) => reservation.customerEmail === user?.email)
             .map((reservation) => (
               <tr key={reservation.id} className="reservationEntry">
                 <td className="reservationDateTime">

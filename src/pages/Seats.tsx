@@ -39,7 +39,7 @@ const Seats = () => {
 
     return reservationsList
       ? reservationsList.filter(
-          (res) => res.screeningInfo === selectedScreening.id
+          (res) => res.screeningId === selectedScreening.id
         )
       : [];
   }, [selectedScreening, reservationsList]);

@@ -1,47 +1,47 @@
 .Movie {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    height: 350px;
-    text-align: center;
-  }
-  
- .poster {
-    width: "10%";
-    height: "10%";
-    object-fit: cover;
-    object-position: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  height: 450px;
+  text-align: center;
+}
 
-  .Movie h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .Movie p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+.Movie img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  object-position: center;
+}
 
-  .Movie:hover {
-    border: 2px solid #000000;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.Movie h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  .MovieLink {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .MovieLink:hover {
-    color: #00aeff;
-  }
-  
-  
+.Movie p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: -5px;
+}
+
+.Movie:hover {
+  border: 2px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.MovieLink {
+  text-decoration: none;
+  color: black;
+}
+
+.MovieLink:hover {
+  color: #00aeff;
+}

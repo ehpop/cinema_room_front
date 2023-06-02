@@ -8,6 +8,7 @@ export interface IMovie {
   ageCategory: number;
   director: string;
   duration: number;
+  description: string;
   posterUrl: string;
 }
 
@@ -25,12 +26,12 @@ const Movie: React.FC<MovieProps> = ({ movie, onClick, className }) => {
         <img
           src={movie?.posterUrl}
           alt={movie?.title}
-          style={{
-            width: "50%",
-            height: "50%",
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
+          // style={{
+          //   width: "50%",
+          //   height: "50%",
+          //   objectFit: "cover",
+          //   objectPosition: "center",
+          // }}
         />
         <div>
           <p>Age category: {movie?.ageCategory}</p>

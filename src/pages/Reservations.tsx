@@ -17,8 +17,8 @@ import Axios from "axios";
 
 export interface IReservation {
   id: number;
-  customerName: string;
-  screeningInfo: number;
+  customerEmail: string;
+  screeningId: number;
   seat: number;
   date: string;
 }
@@ -45,8 +45,8 @@ const Reservations = () => {
   const handleConfirm = async () => {
     const reservation: IReservation = {
       id: 0,
-      customerName: user?.email || "",
-      screeningInfo: selectedScreening?.id || 0,
+      customerEmail: user?.email || "",
+      screeningId: selectedScreening?.id || 0,
       seat: 0,
       date: new Date().toISOString(),
     };
