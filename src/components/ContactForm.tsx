@@ -1,10 +1,13 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 import "./styles/ContactForm.css";
+import Axios from "axios";
+import MessageSubmitted from "../pages/MessageSubmitted";
+import { AppContext } from "../App";
 
 type Category =
   | "General Inquiry"
@@ -13,10 +16,18 @@ type Category =
   | "Other"
   | "Not-Selected";
 
-interface ContactInfo {
+export interface IContactInfo {
   category: Category;
   email: string;
   message: string;
+}
+
+interface IContactJSON {
+  issueDate: string;
+  complaintMsg: string;
+  userId: string;
+  responseContact: string;
+  status: string;
 }
 
 const ContactForm = () => {
@@ -38,8 +49,8 @@ const ContactForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ContactInfo>({
+    formState: { errors, isSubmitting, isSubmitted },
+  } = useForm<IContactInfo>({
     resolver: yupResolver(ContactFormSchema),
     defaultValues: {
       category: "Not-Selected",
@@ -48,8 +59,41 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = (data: ContactInfo) => {
-    console.log(data);
+  const { user, isAuthenticated } = useAuth0();
+  const { submittedData, setSubmittedData } = useContext(AppContext);
+
+  const onSubmit = async (data: IContactInfo) => {
+    const contactJSON: IContactJSON = {
+      issueDate: new Date().toISOString(),
+      complaintMsg: data.message,
+      userId: isAuthenticated && user && user.email ? user.email : "Anonymous",
+      responseContact: data.email,
+      status: "new",
+    };
+
+    try {
+      const response = await Axios.post(
+        "http://localhost:8080/complaints",
+        contactJSON
+      );
+      if (response?.status === 201) {
+        setSubmittedData(data);
+      } else if (response?.status === 400) {
+        console.log(response.data);
+        handleCancel();
+      }
+    } catch (error) {
+      console.log(error);
+      handleCancel();
+      throw error;
+    }
+
+    console.log(contactJSON);
+    console.log(submittedData);
+  };
+
+  const handleCancel = () => {
+    setSubmittedData(null);
   };
 
   return (
@@ -117,8 +161,11 @@ const ContactForm = () => {
         <ReCAPTCHA sitekey="6LfflQAmAAAAAI4qZU79RT9vr6Meburyh6KAgcWP" />
         <input
           type="submit"
-          disabled={Object.keys(errors).length !== 0}
+          disabled={
+            Object.keys(errors).length !== 0 || isSubmitting || isSubmitted
+          }
           value="Submit"
+          onClick={handleSubmit(onSubmit)}
         />
       </form>
     </div>

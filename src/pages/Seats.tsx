@@ -9,6 +9,7 @@ import { IScreening } from "../components/ScreeningInfo";
 import ConfirmButton from "../components/buttons/ConfirmButton";
 import CancelButton from "../components/buttons/CancelButton";
 import { set } from "react-hook-form";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export interface ISeat {
   seatNumber: number;
@@ -22,6 +23,8 @@ const Seats = () => {
     selectedSeats,
     setSelectedSeats,
   } = useContext(AppContext);
+
+  const { user, isAuthenticated } = useAuth0();
 
   const {
     data: reservationsList,
@@ -139,6 +142,15 @@ const Seats = () => {
     return price;
   };
 
+  const setConfirmButtonDisabled = () => {
+    return (
+      selectedSeats &&
+      selectedSeats.length !== 0 &&
+      selectedScreening &&
+      isAuthenticated
+    );
+  };
+
   return (
     <div className="seats">
       <h1>Pick your seat for screening</h1>
@@ -155,6 +167,16 @@ const Seats = () => {
         <div className="PriceDescription">Price:</div>
         <div className="Price">{calculatePrice()} pln</div>
       </div>
+      <div className="ErrorsContainer">
+        {!isAuthenticated && (
+          <p className="ErrorMsg">
+            You need to be logged in to reserve a seat!
+          </p>
+        )}
+        {!(selectedSeats && selectedSeats.length !== 0) && (
+          <p className="ErrorMsg">You need to select seats to proceed!</p>
+        )}
+      </div>
       <div className="ButtonsContainer">
         <CancelButton
           linkTo="/movies/details"
@@ -163,11 +185,7 @@ const Seats = () => {
         <ConfirmButton
           linkTo="/reservations"
           onClick={handleConfirm}
-          disabled={
-            selectedSeats && selectedSeats.length !== 0 && selectedScreening
-              ? false
-              : true
-          }
+          disabled={setConfirmButtonDisabled() ? false : true}
         ></ConfirmButton>
       </div>
     </div>

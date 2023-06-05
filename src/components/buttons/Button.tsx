@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/Button.css";
 interface ButtonProps {
   onClick?: () => void;
   linkTo?: string;

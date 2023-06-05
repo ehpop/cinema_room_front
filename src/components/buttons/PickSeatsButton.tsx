@@ -1,8 +1,20 @@
 import React from "react";
 import Button from "./Button";
+import "../styles/PickSeatsButton.css";
 
-const PickSeatsButton = () => {
-  return <Button linkTo="/seats" value="Pick Seats" />;
+interface IPickSeatsButtonProps {
+  disabled?: boolean;
+}
+
+const PickSeatsButton = ({ disabled }: IPickSeatsButtonProps) => {
+  return (
+    <Button
+      linkTo="/seats"
+      value="Pick Seats"
+      disabled={disabled}
+      className={disabled ? "PickSeatsButtonDisabled" : "PickSeatsButton"}
+    />
+  );
 };
 
 export default PickSeatsButton;

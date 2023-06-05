@@ -7,6 +7,7 @@ import Movies from "./pages/Movies";
 import { IMovie } from "./components/Movie";
 import { IScreening } from "./components/ScreeningInfo";
 import { ISeat } from "./pages/Seats";
+import { IContactInfo } from "./components/ContactForm";
 import Rooms from "./pages/Rooms";
 import Reservations, { IReservation } from "./pages/Reservations";
 import PageNotFound from "./pages/PageNotFound";
@@ -19,6 +20,7 @@ import Seats from "./pages/Seats";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "./components/Footer";
 import ReservationSuccessful from "./pages/ReservationSuccessful";
+import { boolean } from "yup";
 
 interface IAppContext {
   selectedMovie: IMovie | null;
@@ -31,6 +33,10 @@ interface IAppContext {
   setLastReservation: React.Dispatch<React.SetStateAction<IReservation | null>>;
   currentPage: string;
   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
+  isListVisible: boolean;
+  setListVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+  submittedData: IContactInfo | null;
+  setSubmittedData: React.Dispatch<React.SetStateAction<IContactInfo | null>>;
 }
 
 export const AppContext = createContext<IAppContext>({
@@ -44,6 +50,10 @@ export const AppContext = createContext<IAppContext>({
   setLastReservation: () => {},
   currentPage: "",
   setCurrentPage: () => {},
+  isListVisible: false,
+  setListVisibility: () => {},
+  submittedData: null,
+  setSubmittedData: () => {},
 });
 
 function App() {
@@ -65,6 +75,8 @@ function App() {
   );
 
   const [currentPage, setCurrentPage] = useState<string>("");
+  const [isListVisible, setListVisibility] = useState<boolean>(false);
+  const [submittedData, setSubmittedData] = useState<IContactInfo | null>(null);
 
   return (
     <div className="App">
@@ -81,6 +93,10 @@ function App() {
             setLastReservation,
             currentPage,
             setCurrentPage,
+            isListVisible,
+            setListVisibility,
+            submittedData,
+            setSubmittedData,
           }}
         >
           <Router>

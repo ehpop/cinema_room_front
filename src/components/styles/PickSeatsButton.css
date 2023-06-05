@@ -1,0 +1,16 @@
+.PickSeatsButtonDisabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.PickSeatsButtonDisabled:hover {
+  background-color: #ccc;
+}
+
+.PickSeatsButton {
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}

@@ -201,3 +201,27 @@
     font-weight: bold;
     color: black;
   }
+
+  .ErrorContainer {
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+  }
+
+  .ErrorMsg {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: red;
+  }

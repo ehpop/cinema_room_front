@@ -16,8 +16,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: black;
-  gap: 10px;
-  border: 1px solid black;
+  gap: 20px;
 }
 
 .movie-img {
@@ -28,7 +27,7 @@
 }
 
 .title {
-  font-size: 24px;
+  font-size: 42px;
   margin-bottom: 10px;
 }
 
@@ -39,4 +38,20 @@
 
 .movie-details-container button {
   margin-top: 20px;
+}
+
+.movie-details-container table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.movie-details-container table th {
+  text-align: left;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+
+.movie-details-container table .data {
+  width: 100%;
 }
