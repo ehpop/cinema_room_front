@@ -20,8 +20,8 @@
 }
 
 .movie-img {
-  width: 400px;
-  height: 600px;
+  width: 70%;
+  height: 70%;
   object-fit: cover;
   margin-bottom: 10px;
 }

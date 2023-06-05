@@ -55,6 +55,10 @@ const MovieDetails = () => {
                     <td className="data">{director}</td>
                   </tr>
                   <tr>
+                    <td>Category:</td>
+                    <td className="data">{selectedMovie.category}</td>
+                  </tr>
+                  <tr>
                     <td>Duration:</td>
                     <td className="data">{duration} min</td>
                   </tr>

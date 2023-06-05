@@ -14,6 +14,7 @@ export interface IScreening {
   room: number;
   startTime: IDate;
   endTime: IDate;
+  ticketPrice: number;
 }
 
 interface ScreeningInfoProps {
@@ -41,6 +42,10 @@ export const ScreeningInfo = ({
           <tr>
             <td>Movie:</td>
             <td>{selectedMovie?.title}</td>
+          </tr>
+          <tr>
+            <td>Ticket price:</td>
+            <td>{screening.ticketPrice} PLN</td>
           </tr>
           <tr>
             <td>Room:</td>

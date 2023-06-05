@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./styles/ReservationSuccessful.css";
 import { IReservation } from "./Reservations";
-import { IScreening } from "../components/ScreeningInfo";
+import { IScreening } from "../components/ScreeningDetails";
 import { IMovie } from "../components/Movie";
 import {
   extractDateOnlyInfo,

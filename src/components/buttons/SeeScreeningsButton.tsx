@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AppContext } from "../../App";
 import "../styles/SeeScreeningsButton.css";
 import PickSeatsButton from "./PickSeatsButton";
-import { ScreeningInfo, IScreening } from "../ScreeningInfo";
+import { ScreeningInfo, IScreening } from "../ScreeningDetails";
 
 const SeeScreeningsButton = () => {
   const {

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { IReservation } from "./Reservations";
-import { IScreening } from "../components/ScreeningInfo";
+import { IScreening } from "../components/ScreeningDetails";
 import { IMovie } from "../components/Movie";
 import { type } from "os";
 import { extractDateTimeInfo, formatDateTimeInfo } from "../utils/dateUtils";

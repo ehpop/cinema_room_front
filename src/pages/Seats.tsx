@@ -5,7 +5,7 @@ import "./styles/Seats.css";
 import { IReservation } from "../pages/Reservations";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import { IScreening } from "../components/ScreeningInfo";
+import { IScreening } from "../components/ScreeningDetails";
 import ConfirmButton from "../components/buttons/ConfirmButton";
 import CancelButton from "../components/buttons/CancelButton";
 import { set } from "react-hook-form";
@@ -134,10 +134,8 @@ const Seats = () => {
       return 0;
     }
 
-    //! TODO: Calculate price based on selected seats and screening
-    // const pricePerSeat = selectedScreening.price;
-
-    const price = selectedSeats.length * 20;
+    const pricePerSeat = selectedScreening.ticketPrice;
+    const price = selectedSeats.length * pricePerSeat;
 
     return price;
   };

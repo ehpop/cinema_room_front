@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Movies from "./pages/Movies";
 import { IMovie } from "./components/Movie";
-import { IScreening } from "./components/ScreeningInfo";
+import { IScreening } from "./components/ScreeningDetails";
 import { ISeat } from "./pages/Seats";
 import { IContactInfo } from "./components/ContactForm";
 import Rooms from "./pages/Rooms";

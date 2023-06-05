@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import { IScreening, ScreeningInfo } from "./ScreeningInfo";
+import { IScreening, ScreeningInfo } from "./ScreeningDetails";
 import Axios from "axios";
 import { AppContext } from "../App";
 
