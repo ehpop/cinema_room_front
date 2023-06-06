@@ -22,7 +22,7 @@ export interface IContactInfo {
   message: string;
 }
 
-interface IContactJSON {
+export interface IContactJSON {
   issueDate: string;
   complaintMsg: string;
   userId: string;

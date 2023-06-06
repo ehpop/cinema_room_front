@@ -106,6 +106,10 @@ function App() {
               <Route path="/signup" element={<SignUp></SignUp>} />
               <Route path="/movies" element={<Movies></Movies>} />
               <Route
+                path="/movies/category/:category"
+                element={<Movies></Movies>}
+              />
+              <Route
                 path="/movies/details"
                 element={<MovieDetails></MovieDetails>}
               />

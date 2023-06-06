@@ -4,6 +4,7 @@ import MovieCarousel from "../components/MovieCarousel";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { IMovie } from "../components/Movie";
+import MovieCategories from "../components/MovieCategories";
 //import ContactForm from "../components/ContactForm";
 //import MovieCategories from "../components/MovieCategories";
 
@@ -27,7 +28,7 @@ const Home = () => {
 
       <section>
         <h2>Explore Movie Categories</h2>
-        {/* <MovieCategories /> */}
+        <MovieCategories movies={movieList} />
       </section>
 
       <section>

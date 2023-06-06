@@ -6,8 +6,16 @@ import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { useState, useContext } from "react";
 import { AppContext } from "../App";
+import { useParams } from "react-router-dom";
+
+interface IUser {
+  userEmail: string;
+  joinDate: string;
+}
 
 const Movies = () => {
+  const { category: initialCategory } = useParams<{ category: string }>();
+
   const {
     data: movieList,
     isLoading,
@@ -18,7 +26,9 @@ const Movies = () => {
 
   const { setSelectedMovie } = useContext(AppContext);
   const [searchCryteria, setSearchCryteria] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(
+    initialCategory || "All"
+  );
   const [selectedDirector, setSelectedDirector] = useState("All");
   const [selectedDuration, setSelectedDuration] = useState("All");
   const [filteredMovieList, setFilteredMovieList] = useState<
