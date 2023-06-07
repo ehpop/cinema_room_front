@@ -11,7 +11,7 @@ interface IMovieCarouselProps {
 const MovieCarousel = ({ movies }: IMovieCarouselProps) => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const { selectedMovie, setSelectedMovie } = useContext(AppContext);
+  const { setSelectedMovie, setCurrentPage } = useContext(AppContext);
 
   const handlePrevClick = () => {
     if (!isTransitioning) {
@@ -39,6 +39,7 @@ const MovieCarousel = ({ movies }: IMovieCarouselProps) => {
 
   const handleMovieClick = (movie: IMovie) => {
     setSelectedMovie(movie);
+    setCurrentPage("movies");
   };
 
   useEffect(() => {

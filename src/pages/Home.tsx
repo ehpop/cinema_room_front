@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles/Home.css";
 import MovieCarousel from "../components/MovieCarousel";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { IMovie } from "../components/Movie";
 import MovieCategories from "../components/MovieCategories";
-//import ContactForm from "../components/ContactForm";
-//import MovieCategories from "../components/MovieCategories";
+import { Link } from "react-router-dom";
+import { AppContext } from "../App";
 
 const Home = () => {
   const {
@@ -17,34 +17,55 @@ const Home = () => {
     return Axios.get("http://localhost:8080/movies").then((res) => res.data);
   });
 
+  const { setCurrentPage } = useContext(AppContext);
+
+  const handleClickAbout = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    setCurrentPage("about");
+  };
+
+  const handleClickContact = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    setCurrentPage("contact");
+  };
+
   return (
     <div className="homeDiv">
-      <h1>Welcome to our Cinema!</h1>
+      <h1 className="section-title">Welcome to our Cinema!</h1>
 
-      <section>
-        <h2>Now Showing</h2>
+      <section className="now-showing-section">
+        <h2 className="section-title">Now Showing</h2>
         <MovieCarousel movies={movieList ? movieList : []} />
       </section>
 
       <section>
-        <h2>Explore Movie Categories</h2>
+        <h2 className="section-title">Explore Movie Categories</h2>
         <MovieCategories movies={movieList} />
       </section>
 
       <section>
-        <h2>Contact Us</h2>
-        {/* <ContactForm /> */}
-      </section>
+        <h2 className="section-title">More Info</h2>
+        <div className="info-section">
+          <Link
+            to={"/contact"}
+            onClick={handleClickContact}
+            className="section-link"
+          >
+            <section className="contact-us-section">
+              <h2 className="section-title">Contact Us</h2>
+            </section>
+          </Link>
 
-      <section>
-        <h2>About Us</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae
-          mollis ipsum, ut blandit lectus. Integer at lacus id lectus consequat
-          accumsan a eget turpis. Fusce gravida enim eget mauris sollicitudin,
-          at consequat libero posuere. In et mi justo. Sed feugiat vehicula
-          lorem a fermentum. Curabitur a libero vitae mi viverra gravida.
-        </p>
+          <Link
+            to={"/about"}
+            onClick={handleClickAbout}
+            className="section-link"
+          >
+            <section className="about-us-section">
+              <h2 className="section-title">About Us</h2>
+            </section>
+          </Link>
+        </div>
       </section>
     </div>
   );

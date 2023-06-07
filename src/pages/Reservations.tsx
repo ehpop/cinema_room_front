@@ -76,6 +76,20 @@ const Reservations = () => {
     }
   };
 
+  const mapSeats = () => {
+    if (
+      selectedSeats &&
+      selectedSeats.length === 1 &&
+      selectedSeats[0].seatNumber === 69
+    ) {
+      return selectedSeats[0].seatNumber + " :D";
+    }
+
+    return selectedSeats
+      ? selectedSeats.map((seat) => seat.seatNumber).join(", ")
+      : "null";
+  };
+
   const reservationContent = (
     <div className="reservationContainer">
       <h1>Reservation confirmation</h1>
@@ -108,16 +122,15 @@ const Reservations = () => {
             </tr>
             <tr>
               <th>Seat Number(s):</th>
-              <td>
-                {selectedSeats
-                  ? selectedSeats.map((seat) => seat.seatNumber).join(", ")
-                  : "null"}
-              </td>
+              <td>{mapSeats()}</td>
             </tr>
             <tr className="price">
               <th>Price:</th>
               <td>
-                {selectedSeats ? selectedSeats.length * 20 + " PLN" : "null"}
+                {selectedSeats && selectedScreening
+                  ? selectedSeats.length * selectedScreening.ticketPrice +
+                    " PLN"
+                  : "null"}
               </td>
             </tr>
             <tr>

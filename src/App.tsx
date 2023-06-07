@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -74,9 +74,24 @@ function App() {
     null
   );
 
-  const [currentPage, setCurrentPage] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<string>("home");
   const [isListVisible, setListVisibility] = useState<boolean>(false);
   const [submittedData, setSubmittedData] = useState<IContactInfo | null>(null);
+
+  useEffect(() => {
+    if (currentPage === "movies") {
+      if (selectedMovie !== null) {
+        document.title = `Cinema Room - ${selectedMovie.title}`;
+        return;
+      }
+
+      document.title = `Cinema Room - movies`;
+
+      return;
+    }
+
+    document.title = `Cinema Room - ${currentPage}`;
+  }, [currentPage, selectedMovie]);
 
   return (
     <div className="App">
